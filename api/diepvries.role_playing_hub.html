@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.role_playing_hub module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.satellite module" href="diepvries.satellite.html" />
+    <link rel="prev" title="diepvries.link module" href="diepvries.link.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+      <li>Previous: <a href="diepvries.link.html" title="previous chapter">diepvries.link module</a></li>
+      <li>Next: <a href="diepvries.satellite.html" title="next chapter">diepvries.satellite module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.role_playing_hub">
+<span id="diepvries-role-playing-hub-module"></span><h1>diepvries.role_playing_hub module<a class="headerlink" href="#module-diepvries.role_playing_hub" title="Permalink to this headline">¶</a></h1>
+<p>A role playing Hub.</p>
+<dl class="py class">
+<dt id="diepvries.role_playing_hub.RolePlayingHub">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.role_playing_hub.</span></code><code class="sig-name descname"><span class="pre">RolePlayingHub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.role_playing_hub.RolePlayingHub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="diepvries.hub.html#diepvries.hub.Hub" title="diepvries.hub.Hub"><code class="xref py py-class docutils literal notranslate"><span class="pre">diepvries.hub.Hub</span></code></a></p>
+<p>A role playing Hub.</p>
+<p>A role playing Hub is a hub that is not materialized as a table, but is a view
+pointing to a main Hub. The concept is essentially the same as a role playing
+dimension in a star schema.</p>
+<p>One conceptual example of a Role Playing Hub can be a Hub that represents an
+account, that can assume different roles (supplier, transporter, administrator,
+etc…). All of them are accounts, but each of them represent a different role.
+Using this example, only the Hub account would be materialized and populated (as
+a table), as all other hubs (Hub Account Supplier/Transporter/etc…) would be
+views pointing to the main hub.</p>
+<dl class="py method">
+<dt id="diepvries.role_playing_hub.RolePlayingHub.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.role_playing_hub.RolePlayingHub.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a role RolePlayingHub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schema</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Data Vault schema name.</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Role playing hub name.</p></li>
+<li><p><strong>fields</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="diepvries.field.html#diepvries.field.Field" title="diepvries.field.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a>]) – List of fields that this Hub holds.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.role_playing_hub.RolePlayingHub.sql_load_statement">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql_load_statement</span></code><a class="headerlink" href="#diepvries.role_playing_hub.RolePlayingHub.sql_load_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the SQL query to populate the current role playing hub.</p>
+<p>If table has a parent table - role playing hub.</p>
+<p>All needed placeholders are calculated, in order to match template SQL (check
+template_sql.role_playing_hub_dml.sql).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQL query to load target hub.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.role_playing_hub.RolePlayingHub.sql_placeholders">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql_placeholders</span></code><a class="headerlink" href="#diepvries.role_playing_hub.RolePlayingHub.sql_placeholders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Role playing hub specific SQL placeholders.</p>
+<p>These placeholders are used to format the RolePlayingHub loading query.</p>
+<p>The results are joined with the results from super().sql_placeholders(),
+as most placeholders calculated in Table (parent class) are applicable in a
+RolePlayingHub. The only placeholder that is calculated in the parent class
+and replaced in this method is data_vault_table, that points to the parent
+hub in this case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Role playing hub specific SQL placeholders.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.role_playing_hub.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

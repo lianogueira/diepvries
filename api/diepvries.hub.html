@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.hub module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.link module" href="diepvries.link.html" />
+    <link rel="prev" title="diepvries.field module" href="diepvries.field.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+      <li>Previous: <a href="diepvries.field.html" title="previous chapter">diepvries.field module</a></li>
+      <li>Next: <a href="diepvries.link.html" title="next chapter">diepvries.link module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.hub">
+<span id="diepvries-hub-module"></span><h1>diepvries.hub module<a class="headerlink" href="#module-diepvries.hub" title="Permalink to this headline">¶</a></h1>
+<p>A Hub.</p>
+<dl class="py class">
+<dt id="diepvries.hub.Hub">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.hub.</span></code><code class="sig-name descname"><span class="pre">Hub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.hub.Hub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="diepvries.table.html#diepvries.table.Table" title="diepvries.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">diepvries.table.Table</span></code></a></p>
+<p>A hub.</p>
+<dl class="py method">
+<dt id="diepvries.hub.Hub.entity_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">entity_name</span></code><a class="headerlink" href="#diepvries.hub.Hub.entity_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get entity name for current Hub.</p>
+<p>Entity name corresponds to the name of the table, without the prefix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of the entity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.hub.Hub.loading_order">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">loading_order</span></code><a class="headerlink" href="#diepvries.hub.Hub.loading_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get loading order (hubs are the first tables to be loaded).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Table loading order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.hub.Hub.prefix">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">prefix</span></code><a class="headerlink" href="#diepvries.hub.Hub.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get table prefix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Table prefix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.hub.Hub.sql_load_statement">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql_load_statement</span></code><a class="headerlink" href="#diepvries.hub.Hub.sql_load_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the SQL query to populate current hub.</p>
+<p>All needed placeholders are calculated, in order to match template SQL
+(check template_sql.hub_dml.sql).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQL query to load target hub.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.hub.Hub.sql_placeholders">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql_placeholders</span></code><a class="headerlink" href="#diepvries.hub.Hub.sql_placeholders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hub specific SQL placeholders.</p>
+<p>These placeholders are used to format the hub loading query.</p>
+<p>The results are joined with the results from super().sql_placeholders(), as all
+placeholders calculated in Table (parent class) are applicable in a Satellite.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Satellite specific SQL placeholders.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.hub.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

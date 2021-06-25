@@ -1,0 +1,7 @@
+diepvries.satellite module
+==========================
+
+.. automodule:: diepvries.satellite
+   :members:
+   :undoc-members:
+   :show-inheritance:

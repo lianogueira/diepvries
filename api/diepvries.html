@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries package &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.deserializers package" href="diepvries.deserializers.html" />
+    <link rel="prev" title="diepvries" href="modules.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">diepvries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">diepvries</a></li>
+      <li>Next: <a href="diepvries.deserializers.html" title="next chapter">diepvries.deserializers package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries">
+<span id="diepvries-package"></span><h1>diepvries package<a class="headerlink" href="#module-diepvries" title="Permalink to this headline">¶</a></h1>
+<p>Definitions and helpers.</p>
+<dl class="py class">
+<dt id="diepvries.FieldDataType">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.</span></code><code class="sig-name descname"><span class="pre">FieldDataType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.FieldDataType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible data types for a Field.</p>
+<p>These data types are mapped directly from Snowflake root data types (the ones
+that are actually stored in Snowflake metadata views).</p>
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.ARRAY">
+<code class="sig-name descname"><span class="pre">ARRAY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'ARRAY'</span></em><a class="headerlink" href="#diepvries.FieldDataType.ARRAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.BOOLEAN">
+<code class="sig-name descname"><span class="pre">BOOLEAN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'BOOLEAN'</span></em><a class="headerlink" href="#diepvries.FieldDataType.BOOLEAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.DATE">
+<code class="sig-name descname"><span class="pre">DATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'DATE'</span></em><a class="headerlink" href="#diepvries.FieldDataType.DATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.FLOAT">
+<code class="sig-name descname"><span class="pre">FLOAT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'FLOAT'</span></em><a class="headerlink" href="#diepvries.FieldDataType.FLOAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.NUMBER">
+<code class="sig-name descname"><span class="pre">NUMBER</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'NUMBER'</span></em><a class="headerlink" href="#diepvries.FieldDataType.NUMBER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.OBJECT">
+<code class="sig-name descname"><span class="pre">OBJECT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'OBJECT'</span></em><a class="headerlink" href="#diepvries.FieldDataType.OBJECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.TEXT">
+<code class="sig-name descname"><span class="pre">TEXT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TEXT'</span></em><a class="headerlink" href="#diepvries.FieldDataType.TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.TIME">
+<code class="sig-name descname"><span class="pre">TIME</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TIME'</span></em><a class="headerlink" href="#diepvries.FieldDataType.TIME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.TIMESTAMP_LTZ">
+<code class="sig-name descname"><span class="pre">TIMESTAMP_LTZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TIMESTAMP_LTZ'</span></em><a class="headerlink" href="#diepvries.FieldDataType.TIMESTAMP_LTZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.TIMESTAMP_NTZ">
+<code class="sig-name descname"><span class="pre">TIMESTAMP_NTZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TIMESTAMP_NTZ'</span></em><a class="headerlink" href="#diepvries.FieldDataType.TIMESTAMP_NTZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.TIMESTAMP_TZ">
+<code class="sig-name descname"><span class="pre">TIMESTAMP_TZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TIMESTAMP_TZ'</span></em><a class="headerlink" href="#diepvries.FieldDataType.TIMESTAMP_TZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldDataType.VARIANT">
+<code class="sig-name descname"><span class="pre">VARIANT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'VARIANT'</span></em><a class="headerlink" href="#diepvries.FieldDataType.VARIANT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="diepvries.FieldRole">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.</span></code><code class="sig-name descname"><span class="pre">FieldRole</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.FieldRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible roles for each field in a Data Vault model.</p>
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.BUSINESS_KEY">
+<code class="sig-name descname"><span class="pre">BUSINESS_KEY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'business_key'</span></em><a class="headerlink" href="#diepvries.FieldRole.BUSINESS_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.CHILD_KEY">
+<code class="sig-name descname"><span class="pre">CHILD_KEY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'child_key'</span></em><a class="headerlink" href="#diepvries.FieldRole.CHILD_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.DESCRIPTIVE">
+<code class="sig-name descname"><span class="pre">DESCRIPTIVE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'descriptive'</span></em><a class="headerlink" href="#diepvries.FieldRole.DESCRIPTIVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.DRIVING_KEY">
+<code class="sig-name descname"><span class="pre">DRIVING_KEY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'driving_key'</span></em><a class="headerlink" href="#diepvries.FieldRole.DRIVING_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.HASHDIFF">
+<code class="sig-name descname"><span class="pre">HASHDIFF</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'hashdiff'</span></em><a class="headerlink" href="#diepvries.FieldRole.HASHDIFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.HASHKEY">
+<code class="sig-name descname"><span class="pre">HASHKEY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'hashkey'</span></em><a class="headerlink" href="#diepvries.FieldRole.HASHKEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.HASHKEY_PARENT">
+<code class="sig-name descname"><span class="pre">HASHKEY_PARENT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'hashkey_parent'</span></em><a class="headerlink" href="#diepvries.FieldRole.HASHKEY_PARENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.FieldRole.METADATA">
+<code class="sig-name descname"><span class="pre">METADATA</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'metadata'</span></em><a class="headerlink" href="#diepvries.FieldRole.METADATA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="diepvries.FixedPrefixLoggerAdapter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.</span></code><code class="sig-name descname"><span class="pre">FixedPrefixLoggerAdapter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.FixedPrefixLoggerAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">logging.LoggerAdapter</span></code></p>
+<p>Logger with a prefix.</p>
+<p>This LoggerAdapter implementation prefixes log calls with “[prefix]”.</p>
+<p>This is useful to add contextually valuable information to the log call
+(Snowflake username and session ID) without changing the logging format of the
+root logger.</p>
+<dl class="py method">
+<dt id="diepvries.FixedPrefixLoggerAdapter.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.FixedPrefixLoggerAdapter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate logger.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.FixedPrefixLoggerAdapter.process">
+<code class="sig-name descname"><span class="pre">process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.FixedPrefixLoggerAdapter.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a message.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="diepvries.TableType">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.</span></code><code class="sig-name descname"><span class="pre">TableType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.TableType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible types of a table in a Data Vault model.</p>
+<dl class="py attribute">
+<dt id="diepvries.TableType.HUB">
+<code class="sig-name descname"><span class="pre">HUB</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'hub'</span></em><a class="headerlink" href="#diepvries.TableType.HUB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.TableType.LINK">
+<code class="sig-name descname"><span class="pre">LINK</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'link'</span></em><a class="headerlink" href="#diepvries.TableType.LINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.TableType.SATELLITE">
+<code class="sig-name descname"><span class="pre">SATELLITE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'satellite'</span></em><a class="headerlink" href="#diepvries.TableType.SATELLITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diepvries.deserializers.snowflake_deserializer.html">snowflake_deserializer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diepvries.template_sql.sql_formulas.html">sql_formulas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

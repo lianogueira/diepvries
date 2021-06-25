@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naming conventions &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Security" href="security.html" />
+    <link rel="prev" title="Glossary" href="glossary.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Naming conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tables">Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hubs">Hubs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#satellites">Satellites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hashkeys">Hashkeys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#business-keys">Business keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#child-keys">Child keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-fields">Metadata fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#descriptive-fields">Descriptive fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="glossary.html" title="previous chapter">Glossary</a></li>
+      <li>Next: <a href="security.html" title="next chapter">Security</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="naming-conventions">
+<h1>Naming conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">¶</a></h1>
+<p>diepvries relies on naming conventions for tables and fields. This
+brings many advantages, such as a simple system to easily organize and
+filter hundreds of tables, and the ease of string manipulations to
+generate queries.</p>
+<div class="section" id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hubs">
+<h3>Hubs<a class="headerlink" href="#hubs" title="Permalink to this headline">¶</a></h3>
+<p>Hubs are prefixed with <code class="docutils literal notranslate"><span class="pre">h_</span></code> and are named after the entity they
+represent: <code class="docutils literal notranslate"><span class="pre">h_&lt;entity&gt;</span></code>. Conventionally, entity names are singular.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A hub for customers would be named: <code class="docutils literal notranslate"><span class="pre">h_customer</span></code>.</p>
+</div>
+<p>Role-playing hubs are implemented as views on top of the physical hub,
+and are suffixed with what they represent.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A role-playing hub for non-human customers could be named:
+<code class="docutils literal notranslate"><span class="pre">h_customer_robot</span></code>.</p>
+</div>
+</div>
+<div class="section" id="links">
+<h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
+<p>Links are prefixed with <code class="docutils literal notranslate"><span class="pre">l_</span></code> and are named after all the entities
+they link: <code class="docutils literal notranslate"><span class="pre">l_&lt;entity_1&gt;_&lt;entity_2&gt;...&lt;entity_n&gt;</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A link for customers and orders would be named:
+<code class="docutils literal notranslate"><span class="pre">l_order_customer</span></code>.</p>
+</div>
+<p>The order of entities in a link depend on the level of detail. For a
+1-N relationship, N comes first. In the example above, one order is
+linked to one customer (but one customer can have multiple orders),
+hence <code class="docutils literal notranslate"><span class="pre">order</span></code> comes first. For 1-1 and N-M relationships, the first
+entity is usually the main entity populated by a certain process.</p>
+</div>
+<div class="section" id="satellites">
+<h3>Satellites<a class="headerlink" href="#satellites" title="Permalink to this headline">¶</a></h3>
+<p>Hub satellites are prefixed with <code class="docutils literal notranslate"><span class="pre">hs_</span></code> and are named after the hub
+they link to, with an optional suffix: <code class="docutils literal notranslate"><span class="pre">hs_&lt;entity&gt;[_suffix]</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A hub satellite for customers would be named: <code class="docutils literal notranslate"><span class="pre">hs_customer</span></code></p>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">suffix</span></code> is a recommended practice, for traceability purposes,
+as well as for distinguishing multiple satellites linked to the same
+hub.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A hub satellite for customers address details would be named:
+<code class="docutils literal notranslate"><span class="pre">hs_customer_address_details</span></code>.</p>
+</div>
+<p>Link satellites are prefixed with <code class="docutils literal notranslate"><span class="pre">ls_</span></code> and are named after the link
+they link to, with an optional suffix:
+<code class="docutils literal notranslate"><span class="pre">ls_&lt;entity_1&gt;_&lt;entity_2&gt;...&lt;entity_n&gt;[_suffix]</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A link satellite for customers and orders would be named:
+<code class="docutils literal notranslate"><span class="pre">ls_order_customer</span></code>.</p>
+</div>
+<p>The same suffix recommendations apply for hub and link satellites.</p>
+<p>Finally, effectivity satellites are suffixed with <code class="docutils literal notranslate"><span class="pre">_eff</span></code>.</p>
+</div>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>Fields also follow naming conventions. Moreover, they are always
+ordered in the same way: hashkeys, business keys, child keys, metadata
+fields, descriptive fields.</p>
+<div class="section" id="hashkeys">
+<h3>Hashkeys<a class="headerlink" href="#hashkeys" title="Permalink to this headline">¶</a></h3>
+<p>The hashkey of an entity is named after the table, and suffixed with
+<code class="docutils literal notranslate"><span class="pre">_hashkey</span></code>: <code class="docutils literal notranslate"><span class="pre">&lt;table_name&gt;_hashkey</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>The hashkey for the customer hub would be named:
+<code class="docutils literal notranslate"><span class="pre">h_customer_hashkey</span></code>.</p>
+</div>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>The hashkey for the customer/order link would be named:
+<code class="docutils literal notranslate"><span class="pre">l_order_customer_hashkey</span></code>.</p>
+</div>
+<p>Links and satellites reference hashkeys from different parent entities
+(as foreign keys), sharing the same hashkey name.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>The customer hub satellite would have a column named
+<code class="docutils literal notranslate"><span class="pre">h_customer_hashkey</span></code>, referencing
+<code class="docutils literal notranslate"><span class="pre">h_customer.h_customer_hashkey</span></code>.</p>
+</div>
+</div>
+<div class="section" id="business-keys">
+<h3>Business keys<a class="headerlink" href="#business-keys" title="Permalink to this headline">¶</a></h3>
+<p>The business key of an entity is named after the entity, and suffixed
+with <code class="docutils literal notranslate"><span class="pre">_id</span></code>: <code class="docutils literal notranslate"><span class="pre">&lt;entity&gt;_id</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>The customer business key would be named <code class="docutils literal notranslate"><span class="pre">customer_id</span></code>.</p>
+</div>
+<p>In the case of multiple business keys for a single entity, additional
+words should be used: <code class="docutils literal notranslate"><span class="pre">&lt;entity&gt;_&lt;business_key_name&gt;_id</span></code>.</p>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>Multiple customer business keys could be named
+<code class="docutils literal notranslate"><span class="pre">customer_systemfoo_id</span></code>, <code class="docutils literal notranslate"><span class="pre">customer_systembar_id</span></code>.</p>
+</div>
+</div>
+<div class="section" id="child-keys">
+<h3>Child keys<a class="headerlink" href="#child-keys" title="Permalink to this headline">¶</a></h3>
+<p>The child keys of an entity are named after their field names, and
+prefixed with <code class="docutils literal notranslate"><span class="pre">ck_</span></code>: <code class="docutils literal notranslate"><span class="pre">ck_&lt;field_name&gt;</span></code>.</p>
+<p>Child keys are optional.</p>
+</div>
+<div class="section" id="metadata-fields">
+<h3>Metadata fields<a class="headerlink" href="#metadata-fields" title="Permalink to this headline">¶</a></h3>
+<p>Multiple metadata fields are in use for various Data Vault
+entities. They are all prefixed with <code class="docutils literal notranslate"><span class="pre">r_</span></code>, except for
+<code class="docutils literal notranslate"><span class="pre">s_hashdiff</span></code>, which is a bit special.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r_timestamp</span></code>: Used in every entity, it represents the record
+creation timestamp.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_timestamp_end</span></code>: Used in satellites, it represents the record end
+of validity timestamp.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_source</span></code>: Used in every entity, it stores the source of the
+record, i.e. from where it was captured.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s_hashdiff</span></code>: Used in satellites, it stores the hashdiff of the
+record.</p></li>
+</ul>
+</div>
+<div class="section" id="descriptive-fields">
+<h3>Descriptive fields<a class="headerlink" href="#descriptive-fields" title="Permalink to this headline">¶</a></h3>
+<p>Descriptive fields are all the other fields. Their names should be the
+same as the source field names, except if a name conflicts with an SQL
+reserved keyword, or one of the fields described above.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/naming-conventions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

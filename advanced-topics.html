@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced topics &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Development" href="development.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-snowflake-deserializer">Using the Snowflake deserializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#not-using-the-deserializer">Not using the deserializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#role-playing-hubs">Role-playing hubs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#effectivity-satellites">Effectivity satellites</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
+      <li>Next: <a href="development.html" title="next chapter">Development</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-topics">
+<h1>Advanced topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-the-snowflake-deserializer">
+<h2>Using the Snowflake deserializer<a class="headerlink" href="#using-the-snowflake-deserializer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">diepvries</span></code> is bundled with a deserializer: it is able to extract
+metadata from Snowflake in order to automatically instantiate Data
+Vault entities. As long as tables follow the naming conventions,
+<a class="reference internal" href="api/diepvries.hub.html#diepvries.hub.Hub" title="diepvries.hub.Hub"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hub</span></code></a>,
+<a class="reference internal" href="api/diepvries.satellite.html#diepvries.satellite.Satellite" title="diepvries.satellite.Satellite"><code class="xref py py-class docutils literal notranslate"><span class="pre">Satellite</span></code></a> and
+<a class="reference internal" href="api/diepvries.link.html#diepvries.link.Link" title="diepvries.link.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> objects can be created
+automatically.</p>
+<p>When using the deserializer, a connection to your database will be
+initiated, in order to query the metadata tables. This will provide
+<code class="docutils literal notranslate"><span class="pre">diepvries</span></code> with all the information required to automatically
+create Data Vault entity objects.</p>
+<p>Here’s how to use the deserializer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diepvries.deserializers.snowflake_deserializer</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DatabaseConfiguration</span><span class="p">,</span>
+    <span class="n">SnowflakeDeserializer</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">deserialize</span><span class="p">():</span>
+    <span class="n">database_configuration</span> <span class="o">=</span> <span class="n">DatabaseConfiguration</span><span class="p">(</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;&lt;DB&gt;&quot;</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="s2">&quot;&lt;USER&gt;&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span><span class="p">,</span>
+        <span class="n">warehouse</span><span class="o">=</span><span class="s2">&quot;&lt;WAREHOUSE&gt;&quot;</span><span class="p">,</span>
+        <span class="n">account</span><span class="o">=</span><span class="s2">&quot;&lt;ACCOUNT&gt;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">deserializer</span> <span class="o">=</span> <span class="n">SnowflakeDeserializer</span><span class="p">(</span>
+        <span class="n">target_schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h_customer&quot;</span><span class="p">,</span> <span class="s2">&quot;hs_customer&quot;</span><span class="p">],</span>
+        <span class="n">database_configuration</span><span class="o">=</span><span class="n">database_configuration</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">deserialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>% python3 deserializer.py
+<span class="o">[</span>
+  &lt;diepvries.hub.Hub object at 0x7fbe3cc5baf0&gt;,
+  &lt;diepvries.satellite.Satellite object at 0x7fbe3cc5be20&gt;
+<span class="o">]</span>
+<span class="o">[</span><span class="s1">&#39;h_customer&#39;</span>, <span class="s1">&#39;hs_customer&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>The main advantage of the deserializer is DRY: your Data Vault DDLs
+can live anywhere, stored in your favourite format, and <code class="docutils literal notranslate"><span class="pre">diepvries</span></code>
+will extrapolate this information, so you don’t have to describe the
+tables in Python.</p>
+</div>
+<div class="section" id="not-using-the-deserializer">
+<h2>Not using the deserializer<a class="headerlink" href="#not-using-the-deserializer" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to use <code class="docutils literal notranslate"><span class="pre">diepvries</span></code> without the deserializer, if
+you prefer to “manually” configure it. For example, you might have
+your Data Vault tables configuration stored in JSON or YAML, and you
+could use those files to instantiate Hubs, Links and
+Satellites. Another potential reason is if you don’t have access to
+your database instance when <code class="docutils literal notranslate"><span class="pre">diepvries</span></code> is running, maybe you only
+want to generate SQL and then forward the queries to another component
+of your system.</p>
+<p>In that case, you can instantiate everything manually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">diepvries</span> <span class="kn">import</span> <span class="n">FieldDataType</span>
+<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">diepvries.data_vault_load</span> <span class="kn">import</span> <span class="n">DataVaultLoad</span>
+<span class="kn">from</span> <span class="nn">diepvries.hub</span> <span class="kn">import</span> <span class="n">Hub</span>
+<span class="kn">from</span> <span class="nn">diepvries.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
+
+
+<span class="k">def</span> <span class="nf">prepare_sql</span><span class="p">():</span>
+    <span class="c1"># Instantiate structures.</span>
+    <span class="n">hub_foo</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo&quot;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_source&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;foo_id&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">hub_satellite_foo</span> <span class="o">=</span> <span class="n">Satellite</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;s_hashdiff&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp_end&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_source&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;hs_foo&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;some_foo_property&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Prepare data load.</span>
+    <span class="n">dv_load</span> <span class="o">=</span> <span class="n">DataVaultLoad</span><span class="p">(</span>
+        <span class="n">extract_schema</span><span class="o">=</span><span class="s2">&quot;dv_extract&quot;</span><span class="p">,</span>
+        <span class="n">extract_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">staging_schema</span><span class="o">=</span><span class="s2">&quot;dv_staging&quot;</span><span class="p">,</span>
+        <span class="n">staging_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">extract_start_timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="n">hub_foo</span><span class="p">,</span> <span class="n">hub_satellite_foo</span><span class="p">],</span>
+        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;some_source&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Show generated SQL statements.</span>
+    <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">dv_load</span><span class="o">.</span><span class="n">sql_load_script</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">prepare_sql</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="role-playing-hubs">
+<h2>Role-playing hubs<a class="headerlink" href="#role-playing-hubs" title="Permalink to this headline">¶</a></h2>
+<p>Role-playing hubs are hubs not materialized as tables, but rather as
+views pointing to a main hub. They are useful to model different roles
+around the same concept. For example, on top of the account hub
+<code class="docutils literal notranslate"><span class="pre">h_account</span></code>, different role-playing hubs could be
+<code class="docutils literal notranslate"><span class="pre">h_account_supplier</span></code> and <code class="docutils literal notranslate"><span class="pre">h_account_transporter</span></code>, implemented as
+views pointing to <code class="docutils literal notranslate"><span class="pre">h_account</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">diepvries</span></code> can work with role-playing hubs. The deserializer
+supports them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diepvries.deserializers.snowflake_deserializer</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DatabaseConfiguration</span><span class="p">,</span>
+    <span class="n">SnowflakeDeserializer</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">deserialize</span><span class="p">():</span>
+    <span class="n">database_configuration</span> <span class="o">=</span> <span class="n">DatabaseConfiguration</span><span class="p">(</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;&lt;DB&gt;&quot;</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="s2">&quot;&lt;USER&gt;&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span><span class="p">,</span>
+        <span class="n">warehouse</span><span class="o">=</span><span class="s2">&quot;&lt;WAREHOUSE&gt;&quot;</span><span class="p">,</span>
+        <span class="n">account</span><span class="o">=</span><span class="s2">&quot;&lt;ACCOUNT&gt;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">deserializer</span> <span class="o">=</span> <span class="n">SnowflakeDeserializer</span><span class="p">(</span>
+        <span class="n">target_schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span> <span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span> <span class="s2">&quot;h_account_transporter&quot;</span><span class="p">],</span>
+        <span class="n">database_configuration</span><span class="o">=</span><span class="n">database_configuration</span><span class="p">,</span>
+        <span class="n">role_playing_hubs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;h_account_supplier&quot;</span><span class="p">:</span> <span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;h_account_transporter&quot;</span><span class="p">:</span> <span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">deserialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>% python3 rph_deserializer.py
+<span class="o">[</span>
+  &lt;diepvries.hub.Hub object at 0x7fb83c455250&gt;,
+  &lt;diepvries.role_playing_hub.RolePlayingHub object at 0x7fb83e7ae700&gt;,
+  &lt;diepvries.role_playing_hub.RolePlayingHub object at 0x7fb83e7ae640&gt;
+<span class="o">]</span>
+<span class="o">[</span><span class="s1">&#39;h_account&#39;</span>, <span class="s1">&#39;h_account_supplier&#39;</span>, <span class="s1">&#39;h_account_transporter&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Role-playing hubs can also be directly instantiated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">diepvries</span> <span class="kn">import</span> <span class="n">FieldDataType</span>
+<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">diepvries.data_vault_load</span> <span class="kn">import</span> <span class="n">DataVaultLoad</span>
+<span class="kn">from</span> <span class="nn">diepvries.hub</span> <span class="kn">import</span> <span class="n">Hub</span>
+<span class="kn">from</span> <span class="nn">diepvries.role_playing_hub</span> <span class="kn">import</span> <span class="n">RolePlayingHub</span>
+<span class="kn">from</span> <span class="nn">diepvries.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
+
+
+<span class="k">def</span> <span class="nf">prepare_sql</span><span class="p">():</span>
+    <span class="c1"># Instantiate structures.</span>
+    <span class="n">hub_account</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_account_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_source&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;account_id&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">role_playing_hub_account_supplier</span> <span class="o">=</span> <span class="n">RolePlayingHub</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_source&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;h_account_supplier&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;account_id&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">role_playing_hub_account_supplier</span><span class="o">.</span><span class="n">parent_table</span> <span class="o">=</span> <span class="n">hub_account</span>
+
+    <span class="c1"># Prepare data load.</span>
+    <span class="n">dv_load</span> <span class="o">=</span> <span class="n">DataVaultLoad</span><span class="p">(</span>
+        <span class="n">extract_schema</span><span class="o">=</span><span class="s2">&quot;dv_extract&quot;</span><span class="p">,</span>
+        <span class="n">extract_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">staging_schema</span><span class="o">=</span><span class="s2">&quot;dv_staging&quot;</span><span class="p">,</span>
+        <span class="n">staging_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">extract_start_timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="n">hub_account</span><span class="p">,</span> <span class="n">role_playing_hub_account_supplier</span><span class="p">],</span>
+        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;some_source&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Show generated SQL statements.</span>
+    <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">dv_load</span><span class="o">.</span><span class="n">sql_load_script</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">prepare_sql</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="effectivity-satellites">
+<h2>Effectivity satellites<a class="headerlink" href="#effectivity-satellites" title="Permalink to this headline">¶</a></h2>
+<p>Effectivity satellites model links which can change over time. For
+example, imagine a link between a Customer and a Contact entry. A
+Customer can have multiple Contact entries, however it could be
+required to keep only one Contact entry per Customer open at a given
+point in time. This means that, if a Customer changes its Contact
+entry, only the latest relationship between the Customer and its
+Contact is kept as an open relationship.</p>
+<p>This is also supported by <code class="docutils literal notranslate"><span class="pre">diepvries</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diepvries.driving_key_field</span> <span class="kn">import</span> <span class="n">DrivingKeyField</span>
+<span class="kn">from</span> <span class="nn">diepvries.deserializers.snowflake_deserializer</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DatabaseConfiguration</span><span class="p">,</span>
+    <span class="n">SnowflakeDeserializer</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">deserialize</span><span class="p">():</span>
+    <span class="n">database_configuration</span> <span class="o">=</span> <span class="n">DatabaseConfiguration</span><span class="p">(</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;&lt;DB&gt;&quot;</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="s2">&quot;&lt;USER&gt;&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span><span class="p">,</span>
+        <span class="n">warehouse</span><span class="o">=</span><span class="s2">&quot;&lt;WAREHOUSE&gt;&quot;</span><span class="p">,</span>
+        <span class="n">account</span><span class="o">=</span><span class="s2">&quot;&lt;ACCOUNT&gt;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">deserializer</span> <span class="o">=</span> <span class="n">SnowflakeDeserializer</span><span class="p">(</span>
+        <span class="n">target_schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;l_foo_bar&quot;</span><span class="p">,</span> <span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">],</span>
+        <span class="n">database_configuration</span><span class="o">=</span><span class="n">database_configuration</span><span class="p">,</span>
+        <span class="n">driving_keys</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">DrivingKeyField</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;l_foo_bar&quot;</span><span class="p">,</span>
+                <span class="n">satellite_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deserializer</span><span class="o">.</span><span class="n">deserialized_target_tables</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">deserialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>% python3 effsat_deserializer.py
+<span class="o">[</span>
+  &lt;diepvries.link.Link object at 0x7fd64db22520&gt;,
+  &lt;diepvries.effectivity_satellite.EffectivitySatellite object at 0x7fd64db22ac0&gt;
+<span class="o">]</span>
+<span class="o">[</span><span class="s1">&#39;l_foo_bar&#39;</span>, <span class="s1">&#39;ls_foo_bar_eff&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Effectivity satellites can also be directly instantiated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">from</span> <span class="nn">diepvries</span> <span class="kn">import</span> <span class="n">FieldDataType</span>
+<span class="kn">from</span> <span class="nn">diepvries.data_vault_load</span> <span class="kn">import</span> <span class="n">DataVaultLoad</span>
+<span class="kn">from</span> <span class="nn">diepvries.driving_key_field</span> <span class="kn">import</span> <span class="n">DrivingKeyField</span>
+<span class="kn">from</span> <span class="nn">diepvries.effectivity_satellite</span> <span class="kn">import</span> <span class="n">EffectivitySatellite</span>
+<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">diepvries.hub</span> <span class="kn">import</span> <span class="n">Hub</span>
+<span class="kn">from</span> <span class="nn">diepvries.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
+
+
+<span class="k">def</span> <span class="nf">prepare_sql</span><span class="p">():</span>
+    <span class="c1"># Instantiate structures.</span>
+    <span class="n">hub_foo</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">hub_bar</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">satellite_foo_bar</span> <span class="o">=</span> <span class="n">Satellite</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+    <span class="n">eff_satellite_foo_bar</span> <span class="o">=</span> <span class="n">EffectivitySatellite</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+        <span class="n">driving_keys</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">DrivingKeyField</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar&quot;</span><span class="p">,</span>
+                <span class="n">satellite_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_eff&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;h_foo_hashkey&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;s_hashdiff&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_timestamp_end&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;r_source&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">Field</span><span class="p">(</span>
+                <span class="n">parent_table_name</span><span class="o">=</span><span class="s2">&quot;ls_foo_bar_eff&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;some_property&quot;</span><span class="p">,</span>
+                <span class="n">data_type</span><span class="o">=</span><span class="n">FieldDataType</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                <span class="n">is_mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Prepare data load.</span>
+    <span class="n">dv_load</span> <span class="o">=</span> <span class="n">DataVaultLoad</span><span class="p">(</span>
+        <span class="n">extract_schema</span><span class="o">=</span><span class="s2">&quot;dv_extract&quot;</span><span class="p">,</span>
+        <span class="n">extract_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">staging_schema</span><span class="o">=</span><span class="s2">&quot;dv_staging&quot;</span><span class="p">,</span>
+        <span class="n">staging_table</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+        <span class="n">extract_start_timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+        <span class="n">target_tables</span><span class="o">=</span><span class="p">[</span><span class="n">hub_foo</span><span class="p">,</span> <span class="n">hub_bar</span><span class="p">,</span> <span class="n">satellite_foo_bar</span><span class="p">,</span> <span class="n">eff_satellite_foo_bar</span><span class="p">],</span>
+        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;some_source&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Show generated SQL statements.</span>
+    <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">dv_load</span><span class="o">.</span><span class="n">sql_load_script</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">prepare_sql</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/advanced-topics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

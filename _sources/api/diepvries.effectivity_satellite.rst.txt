@@ -1,0 +1,7 @@
+diepvries.effectivity\_satellite module
+=======================================
+
+.. automodule:: diepvries.effectivity_satellite
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Philosophy &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#convention-over-configuration">Convention over configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-field-mapping">Automatic field mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#no-external-dependencies">No external dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restricted-scope">Restricted scope</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="glossary.html" title="next chapter">Glossary</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="philosophy">
+<h1>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h1>
+<p>diepvries has been designed with the following in mind:</p>
+<div class="section" id="convention-over-configuration">
+<h2>Convention over configuration<a class="headerlink" href="#convention-over-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Strong <a class="reference internal" href="naming-conventions.html"><span class="doc">naming conventions</span></a> for table and
+column names allow diepvries to magically know the role of a given
+entity. For example, <code class="docutils literal notranslate"><span class="pre">h_customer</span></code> is a hub, <code class="docutils literal notranslate"><span class="pre">hs_customer</span></code> is a hub
+satellite, and <code class="docutils literal notranslate"><span class="pre">h_customer_hashkey</span></code> is the hashkey of the customer
+hub. These conventions have been carefully crafted to remove
+ambiguities and make everything predictable. On top of this, Data
+Vault tables are easier to analyze when they are sorted by type, which
+comes for free with the table prefixes.</p>
+<p>Relying on conventions rather than configuration allows focusing on
+business logic and does not clutter source code with configuration
+files, which are hard to maintain and allow inconsistencies to creep
+in.</p>
+</div>
+<div class="section" id="automatic-field-mapping">
+<h2>Automatic field mapping<a class="headerlink" href="#automatic-field-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Field mapping (between source systems and Data Vault entities) is
+often manually done and error-prone. In an extraction table, diepvries
+assumes the field names are the same as in the Data Vault tables,
+allowing a natural mapping based on identical names.</p>
+</div>
+<div class="section" id="no-external-dependencies">
+<h2>No external dependencies<a class="headerlink" href="#no-external-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>With the exception of the Python Snowflake connector (to be able to
+automatically deserialize tables into Python objects), diepvries
+doesn’t depend on anything but a Python runtime. This is a standalone
+tool that does not bring outdated or conflicting packages into your
+dependencies tree. As a result, it is very lightweight.</p>
+</div>
+<div class="section" id="restricted-scope">
+<h2>Restricted scope<a class="headerlink" href="#restricted-scope" title="Permalink to this headline">¶</a></h2>
+<p>diepvries is not a full-blown solution to manage your Data
+Vault. Instead, it focuses on one thing and does it well: generating
+SQL to load data in a Data Vault. This makes it a very flexible tool
+to integrate into your environment: it does not care how data reaches
+extraction tables, or how the generated SQL is executed.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/philosophy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

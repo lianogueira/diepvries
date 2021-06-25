@@ -1,0 +1,13 @@
+diepvries.deserializers package
+===============================
+
+.. automodule:: diepvries.deserializers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 4
+
+   snowflake_deserializer <diepvries.deserializers.snowflake_deserializer>

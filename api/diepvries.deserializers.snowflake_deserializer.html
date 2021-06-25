@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.deserializers.snowflake_deserializer module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.template_sql package" href="diepvries.template_sql.html" />
+    <link rel="prev" title="diepvries.deserializers package" href="diepvries.deserializers.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">snowflake_deserializer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+  <li><a href="diepvries.deserializers.html">diepvries.deserializers package</a><ul>
+      <li>Previous: <a href="diepvries.deserializers.html" title="previous chapter">diepvries.deserializers package</a></li>
+      <li>Next: <a href="diepvries.template_sql.html" title="next chapter">diepvries.template_sql package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.deserializers.snowflake_deserializer">
+<span id="diepvries-deserializers-snowflake-deserializer-module"></span><h1>diepvries.deserializers.snowflake_deserializer module<a class="headerlink" href="#module-diepvries.deserializers.snowflake_deserializer" title="Permalink to this headline">¶</a></h1>
+<p>Deserializer for Snowflake.</p>
+<dl class="py class">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.deserializers.snowflake_deserializer.</span></code><code class="sig-name descname"><span class="pre">DatabaseConfiguration</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warehouse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Needed fields to create a Snowflake database connection.</p>
+<dl class="py attribute">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.account">
+<code class="sig-name descname"><span class="pre">account</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.account" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.database">
+<code class="sig-name descname"><span class="pre">database</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.password">
+<code class="sig-name descname"><span class="pre">password</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.user">
+<code class="sig-name descname"><span class="pre">user</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.warehouse">
+<code class="sig-name descname"><span class="pre">warehouse</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration.warehouse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.deserializers.snowflake_deserializer.</span></code><code class="sig-name descname"><span class="pre">SnowflakeDeserializer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driving_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_playing_hubs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Deserialize a Data Vault model, based on Snowflake system metadata tables.</p>
+<p>The deserialization process will consist in converting the list of target table
+names to a list of Table instances.</p>
+<p>Each Table will have a list of Field instances (representing
+database table columns).</p>
+<dl class="py method">
+<dt id="diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driving_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_playing_hubs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a SnowflakeDeserializer.</p>
+<p>Besides setting __init__ arguments as class attributes, it also creates a
+Snowflake database connection.</p>
+<p>Both target_tables and fields have their own setters (check
+&#64;target_tables.setter and &#64;fields.setter for more detail).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_schema</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Schema where the Data Vault model is stored.</p></li>
+<li><p><strong>target_tables</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Names of the tables that should be deserialized.</p></li>
+<li><p><strong>database_configuration</strong> (<a class="reference internal" href="#diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration" title="diepvries.deserializers.snowflake_deserializer.DatabaseConfiguration"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseConfiguration</span></code></a>) – Holds all properties needed to create a Snowflake
+database connection.</p></li>
+<li><p><strong>driving_keys</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="diepvries.driving_key_field.html#diepvries.driving_key_field.DrivingKeyField" title="diepvries.driving_key_field.DrivingKeyField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DrivingKeyField</span></code></a>]]) – List of fields that should be used as driving keys in
+current model’s effectivity satellites (if applicable).</p></li>
+<li><p><strong>role_playing_hubs</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – List of tables that should be created as
+RolePlayingHub objects. Each dictionary has the role playing hub as key
+and the parent table as value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.__str__">
+<code class="sig-name descname"><span class="pre">__str__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a SnowflakeDeserializer object as a string.</p>
+<p>This helps the tracking of logging events per entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Logger string format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.deserialized_target_tables">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">deserialized_target_tables</span></code><a class="headerlink" href="#diepvries.deserializers.snowflake_deserializer.SnowflakeDeserializer.deserialized_target_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize all target tables passed as argument during instance creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="diepvries.table.html#diepvries.table.Table" title="diepvries.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of deserialized target tables.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.deserializers.snowflake_deserializer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

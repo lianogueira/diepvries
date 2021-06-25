@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.template_sql.sql_formulas module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.data_vault_load module" href="diepvries.data_vault_load.html" />
+    <link rel="prev" title="diepvries.template_sql package" href="diepvries.template_sql.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">sql_formulas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+  <li><a href="diepvries.template_sql.html">diepvries.template_sql package</a><ul>
+      <li>Previous: <a href="diepvries.template_sql.html" title="previous chapter">diepvries.template_sql package</a></li>
+      <li>Next: <a href="diepvries.data_vault_load.html" title="next chapter">diepvries.data_vault_load module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.template_sql.sql_formulas">
+<span id="diepvries-template-sql-sql-formulas-module"></span><h1>diepvries.template_sql.sql_formulas module<a class="headerlink" href="#module-diepvries.template_sql.sql_formulas" title="Permalink to this headline">¶</a></h1>
+<p>SQL formulas (formatted strings).</p>
+<dl class="py function">
+<dt id="diepvries.template_sql.sql_formulas.format_fields_for_join">
+<code class="sig-prename descclassname"><span class="pre">diepvries.template_sql.sql_formulas.</span></code><code class="sig-name descname"><span class="pre">format_fields_for_join</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_1_alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_2_alias</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.template_sql.sql_formulas.format_fields_for_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get formatted list of field names for SQL JOIN condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="diepvries.field.html#diepvries.field.Field" title="diepvries.field.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a>, <a class="reference internal" href="diepvries.driving_key_field.html#diepvries.driving_key_field.DrivingKeyField" title="diepvries.driving_key_field.DrivingKeyField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DrivingKeyField</span></code></a>]]) – Fields to be formatted.</p></li>
+<li><p><strong>table_1_alias</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Alias that should be used in the field on the left side of the
+equality sign.</p></li>
+<li><p><strong>table_2_alias</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – alias that should be used in the field on the right side of the
+equality sign.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Fields list formatted for an SQL JOIN condition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="diepvries.template_sql.sql_formulas.format_fields_for_select">
+<code class="sig-prename descclassname"><span class="pre">diepvries.template_sql.sql_formulas.</span></code><code class="sig-name descname"><span class="pre">format_fields_for_select</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_alias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.template_sql.sql_formulas.format_fields_for_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get formatted list of field names for SQL SELECT statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="diepvries.field.html#diepvries.field.Field" title="diepvries.field.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a>, <a class="reference internal" href="diepvries.driving_key_field.html#diepvries.driving_key_field.DrivingKeyField" title="diepvries.driving_key_field.DrivingKeyField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DrivingKeyField</span></code></a>]]) – Fields to be formatted.</p></li>
+<li><p><strong>table_alias</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Alias that should be used in each field.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Fields list formatted for SQL SELECT clause.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.template_sql.sql_formulas.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

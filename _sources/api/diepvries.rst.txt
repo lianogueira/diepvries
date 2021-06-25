@@ -1,0 +1,27 @@
+diepvries package
+=================
+
+.. automodule:: diepvries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. toctree::
+   :maxdepth: 4
+
+   deserializers <diepvries.deserializers>
+   template_sql <diepvries.template_sql>
+
+
+.. toctree::
+   :maxdepth: 4
+
+   data_vault_load <diepvries.data_vault_load>
+   driving_key_field <diepvries.driving_key_field>
+   effectivity_satellite <diepvries.effectivity_satellite>
+   field <diepvries.field>
+   hub <diepvries.hub>
+   link <diepvries.link>
+   role_playing_hub <diepvries.role_playing_hub>
+   satellite <diepvries.satellite>
+   table <diepvries.table>

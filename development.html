@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Development &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="diepvries" href="api/modules.html" />
+    <link rel="prev" title="Advanced topics" href="advanced-topics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes-diagram">Classes diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="advanced-topics.html" title="previous chapter">Advanced topics</a></li>
+      <li>Next: <a href="api/modules.html" title="next chapter">diepvries</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="classes-diagram">
+<h2>Classes diagram<a class="headerlink" href="#classes-diagram" title="Permalink to this headline">¶</a></h2>
+digraph &quot;classes&quot; {
+
+// Generated
+
+charset=&quot;utf-8&quot;
+rankdir=BT
+&quot;0&quot; [label=&quot;{DataVaultLoad|extract_schema\lextract_start_timestamp\lextract_table\lsource\lsql_load_script\lstaging_create_sql_statement\lstaging_schema\lstaging_table\ltarget_tables\l}&quot;, shape=&quot;record&quot;];
+&quot;1&quot; [label=&quot;{DataVaultField|data_type\lddl_in_staging\lis_mandatory\llength\lname\lname_in_staging\lparent_table_name\lparent_table_type\lposition\lprecision\lprefix\lrole\lscale\lsuffix\l}&quot;, shape=&quot;record&quot;];
+&quot;2&quot; [label=&quot;{DataVaultTable|fields\lfields_by_name\lfields_by_role\lhashkey_sql\lloading_order\lname\lschema\lsql_load_statement\lsql_placeholders\lstaging_schema\lstaging_table\l}&quot;, shape=&quot;record&quot;];
+&quot;3&quot; [label=&quot;{DrivingKeyField|\l}&quot;, shape=&quot;record&quot;];
+&quot;4&quot; [label=&quot;{EffectivitySatellite|driving_keys\lsql_load_statement\lsql_placeholders\l}&quot;, shape=&quot;record&quot;];
+&quot;5&quot; [label=&quot;{Hub|entity_name\lloading_order\lprefix\lsql_load_statement\lsql_placeholders\l}&quot;, shape=&quot;record&quot;];
+&quot;6&quot; [label=&quot;{Link|loading_order\lparent_hub_names\lsql_load_statement\lsql_placeholders\l}&quot;, shape=&quot;record&quot;];
+&quot;7&quot; [label=&quot;{RolePlayingHub|parent_table\lsql_load_statement\lsql_placeholders\l}&quot;, shape=&quot;record&quot;];
+&quot;8&quot; [label=&quot;{Satellite|hashdiff_sql\lloading_order\lparent_table\lparent_table_name\lsql_load_statement\lsql_placeholders\l}&quot;, shape=&quot;record&quot;];
+&quot;4&quot; -&gt; &quot;8&quot; [arrowhead=&quot;empty&quot;, arrowtail=&quot;none&quot;];
+&quot;5&quot; -&gt; &quot;2&quot; [arrowhead=&quot;empty&quot;, arrowtail=&quot;none&quot;];
+&quot;6&quot; -&gt; &quot;2&quot; [arrowhead=&quot;empty&quot;, arrowtail=&quot;none&quot;];
+&quot;7&quot; -&gt; &quot;5&quot; [arrowhead=&quot;empty&quot;, arrowtail=&quot;none&quot;];
+&quot;8&quot; -&gt; &quot;2&quot; [arrowhead=&quot;empty&quot;, arrowtail=&quot;none&quot;];
+
+// Manually added; pyreverse doesn't understand type hints
+
+&quot;1&quot; -&gt; &quot;2&quot; [arrowhead=&quot;diamond&quot;, arrowtail=&quot;none&quot;, label=&quot;fields&quot;];
+&quot;2&quot; -&gt; &quot;0&quot; [arrowhead=&quot;diamond&quot;, arrowtail=&quot;none&quot;, label=&quot;target_tables&quot;];
+}</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/development.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

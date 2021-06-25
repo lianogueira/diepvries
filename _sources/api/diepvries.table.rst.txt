@@ -1,0 +1,7 @@
+diepvries.table module
+======================
+
+.. automodule:: diepvries.table
+   :members:
+   :undoc-members:
+   :show-inheritance:

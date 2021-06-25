@@ -1,0 +1,7 @@
+diepvries.deserializers.snowflake\_deserializer module
+======================================================
+
+.. automodule:: diepvries.deserializers.snowflake_deserializer
+   :members:
+   :undoc-members:
+   :show-inheritance:

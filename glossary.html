@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glossary &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Naming conventions" href="naming-conventions.html" />
+    <link rel="prev" title="Philosophy" href="philosophy.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-types">Table Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#field-types">Field Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">API documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="philosophy.html" title="previous chapter">Philosophy</a></li>
+      <li>Next: <a href="naming-conventions.html" title="next chapter">Naming conventions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="table-types">
+<h2>Table Types<a class="headerlink" href="#table-types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Extraction table:</strong> A table storing all data extracted from a
+source. This is the input for the framework.</p></li>
+<li><p><strong>Staging table:</strong> The table created from the extraction table and
+containing all DV specific fields used to load every target table
+(hubs, links and satellites).</p></li>
+<li><p><strong>Hub:</strong> Table that keeps record of all distinct business keys of a
+specific entity.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>Hub Customer will have one record per customer.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Link:</strong> Table that keeps record of all distinct relationships
+between one or more hubs.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>Link Customer Activity will store one record per relationship
+between Customer and Activity.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Satellite:</strong> Table that contains all properties of a link or a
+satellite. The data in this table is totally historized. Each row
+has a start and end timestamp. If a change is detected, a new record
+is inserted and the start and end timestamps adjusted accordingly.</p>
+<ul>
+<li><p><strong>Effectivity Satellite:</strong> A special type of link satellite, that
+defines which link relationship is active at a given point in
+time, based on a subset of link fields.</p></li>
+</ul>
+</li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>Let’s imagine Link Customer Activity presented in Link table
+example above. If we would want to keep just the latest activity
+performed by the customer as active (open version in the satellite)
+we would need an effectivity satellite, with <code class="docutils literal notranslate"><span class="pre">h_customer_hashkey</span></code>
+defined as <code class="docutils literal notranslate"><span class="pre">driving_key</span></code>.</p>
+</div>
+</div>
+<div class="section" id="field-types">
+<h2>Field Types<a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Business key:</strong> Operational identifier of an entity.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p><code class="docutils literal notranslate"><span class="pre">customer_id</span></code>.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Child key:</strong> A field that exists in the source system, is not a
+business key, but is used to define a relationship between two
+entities.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p>A link between a Customer and an Activity may have a timestamp that
+represents the time in which the customer started doing that
+activity. If a customer does the same activity three times a day,
+we record three relationships. If we did not have this field as
+child key and the Customer would do the same activity during a
+whole month, we would record one new relationship in that month.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Hashkey:</strong> generated identifier, equivalent to a hashed version of
+the table business keys.</p></li>
+</ul>
+<div class="topic">
+<p class="topic-title">Example</p>
+<p><code class="docutils literal notranslate"><span class="pre">h_customer_hashkey</span></code> will correspond to an hashed version of
+<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>, and will be used as primary key of Hub Customer
+(<code class="docutils literal notranslate"><span class="pre">h_customer</span></code>).</p>
+</div>
+<ul class="simple">
+<li><p><strong>Hashdiff:</strong> generated field, equivalent to a data row identifier
+(hashed version of all business keys + child_keys + descriptive
+field). This field is used to identify which records were changed
+between loads.</p></li>
+<li><p><strong>Metadata:</strong> Fields that represent Data Vault specific metadata:
+for now, the three fields defined as metadata are the following:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_timestamp</span></code>: start timestamp of a record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_timestamp_end</span></code>: end timestamp of a record (only applicable to
+satellites).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r_source</span></code>: source system (API/database/etc).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/glossary.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

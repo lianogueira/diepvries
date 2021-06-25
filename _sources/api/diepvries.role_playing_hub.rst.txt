@@ -1,0 +1,7 @@
+diepvries.role\_playing\_hub module
+===================================
+
+.. automodule:: diepvries.role_playing_hub
+   :members:
+   :undoc-members:
+   :show-inheritance:

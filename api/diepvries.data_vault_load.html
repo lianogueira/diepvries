@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.data_vault_load module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.driving_key_field module" href="diepvries.driving_key_field.html" />
+    <link rel="prev" title="diepvries.template_sql.sql_formulas module" href="diepvries.template_sql.sql_formulas.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.field.html">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+      <li>Previous: <a href="diepvries.template_sql.sql_formulas.html" title="previous chapter">diepvries.template_sql.sql_formulas module</a></li>
+      <li>Next: <a href="diepvries.driving_key_field.html" title="next chapter">diepvries.driving_key_field module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.data_vault_load">
+<span id="diepvries-data-vault-load-module"></span><h1>diepvries.data_vault_load module<a class="headerlink" href="#module-diepvries.data_vault_load" title="Permalink to this headline">¶</a></h1>
+<p>Module for a Data Vault load.</p>
+<dl class="py class">
+<dt id="diepvries.data_vault_load.DataVaultLoad">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.data_vault_load.</span></code><code class="sig-name descname"><span class="pre">DataVaultLoad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extract_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">staging_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">staging_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_start_timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Load data in a Data Vault.</p>
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extract_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">staging_schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">staging_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_start_timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a DataVaultLoad object and calculate additional fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extract_schema</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Schema where the extraction table is stored.</p></li>
+<li><p><strong>extract_table</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Name of the extraction table.</p></li>
+<li><p><strong>staging_schema</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Schema where the staging table should be created.</p></li>
+<li><p><strong>staging_table</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Name of the staging table (functional name, as the physical
+name will be calculated in staging_table property getter).</p></li>
+<li><p><strong>extract_start_timestamp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – Moment when the extraction started (when we started
+fetching data from source).</p></li>
+<li><p><strong>target_tables</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="diepvries.table.html#diepvries.table.Table" title="diepvries.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>]) – Tables that will be populated by current staging table.</p></li>
+<li><p><strong>source</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Source system/API/database. If source is not passed as argument, the
+process will assume that a source (field named according to
+METADATA_FIELDS naming conventions) will exist in target table.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When the extract_start_timestamp is not linked to a timezone.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.__str__">
+<code class="sig-name descname"><span class="pre">__str__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a DataVaultLoad object as a string.</p>
+<p>This helps with the tracking of logging events per entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String representation of this DataVaultLoad instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.sql_load_script">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql_load_script</span></code><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.sql_load_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the SQL script to load current Data Vault model.</p>
+<blockquote>
+<div><p>It is a list of SQL commands.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>SQL script that should be executed to load current Data Vault model - one</dt><dd><p>entry per table to load.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.staging_create_sql_statement">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">staging_create_sql_statement</span></code><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.staging_create_sql_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the SQL query to create the staging table.</p>
+<p>All needed placeholders are calculated, in order to match template SQL (check
+template_sql/staging_table_ddl.sql).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQL query to create staging table.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.staging_table">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">staging_table</span></code><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.staging_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the staging table in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of the staging table (suffixed with extract_start_timestamp).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.data_vault_load.DataVaultLoad.target_tables">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">target_tables</span></code><a class="headerlink" href="#diepvries.data_vault_load.DataVaultLoad.target_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get target tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="diepvries.table.html#diepvries.table.Table" title="diepvries.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of target tables.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.data_vault_load.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

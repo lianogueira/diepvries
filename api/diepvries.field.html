@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diepvries.field module &#8212; diepvries  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="diepvries.hub module" href="diepvries.hub.html" />
+    <link rel="prev" title="diepvries.effectivity_satellite module" href="diepvries.effectivity_satellite.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">diepvries</a></h1>
+
+
+
+<p class="blurb">Data Vault framework in Python</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../naming-conventions.html">Naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics.html">Advanced topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diepvries.html">diepvries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diepvries.deserializers.html">deserializers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.template_sql.html">template_sql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.data_vault_load.html">data_vault_load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.driving_key_field.html">driving_key_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.effectivity_satellite.html">effectivity_satellite</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.hub.html">hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.link.html">link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.role_playing_hub.html">role_playing_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.satellite.html">satellite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diepvries.table.html">table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">diepvries</a><ul>
+  <li><a href="diepvries.html">diepvries package</a><ul>
+      <li>Previous: <a href="diepvries.effectivity_satellite.html" title="previous chapter">diepvries.effectivity_satellite module</a></li>
+      <li>Next: <a href="diepvries.hub.html" title="next chapter">diepvries.hub module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-diepvries.field">
+<span id="diepvries-field-module"></span><h1>diepvries.field module<a class="headerlink" href="#module-diepvries.field" title="Permalink to this headline">¶</a></h1>
+<p>Module for a Data Vault field.</p>
+<dl class="py class">
+<dt id="diepvries.field.Field">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">diepvries.field.</span></code><code class="sig-name descname"><span class="pre">Field</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_mandatory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.field.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A field in a Data Vault model.</p>
+<dl class="py method">
+<dt id="diepvries.field.Field.__eq__">
+<code class="sig-name descname"><span class="pre">__eq__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.field.Field.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equality of a Data Vault field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.__hash__">
+<code class="sig-name descname"><span class="pre">__hash__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.field.Field.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash of a Data Vault field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_mandatory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.field.Field.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a Field.</p>
+<p>Convert both name and parent_table_name to lower case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent_table_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Name of parent table in the database.</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Column name in the database.</p></li>
+<li><p><strong>data_type</strong> (<a class="reference internal" href="diepvries.html#diepvries.FieldDataType" title="diepvries.FieldDataType"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldDataType</span></code></a>) – Column data type in the database.</p></li>
+<li><p><strong>position</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Column position in the database.</p></li>
+<li><p><strong>is_mandatory</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Column is mandatory in the database.</p></li>
+<li><p><strong>precision</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Numeric precision (maximum number of digits before the decimal
+separator). Only applicable when <cite>self.data_type==FieldDataType.NUMBER</cite>.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Numeric scale (maximum number of digits after the decimal
+separator). Only applicable when <cite>self.data_type==FieldDataType.NUMBER</cite>.</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Character length (maximum number of characters allowed). Only
+applicable when <cite>self.data_type==FieldDataType.TEXT</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.__str__">
+<code class="sig-name descname"><span class="pre">__str__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#diepvries.field.Field.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a Field object as a string.</p>
+<p>This helps the tracking of logging events per entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String representation for the <cite>Field</cite> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.ddl_in_staging">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ddl_in_staging</span></code><a class="headerlink" href="#diepvries.field.Field.ddl_in_staging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get DDL expression to create this field in the staging table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DDL expression for this field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.name_in_staging">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name_in_staging</span></code><a class="headerlink" href="#diepvries.field.Field.name_in_staging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name that this field should have, when created in a staging table.</p>
+<p>In most cases this function will return <cite>self.name</cite>, but for hashdiffs the name
+is &lt;parent_table_name&gt;_hashdiff (every Satellite has one hashdiff field, named
+s_hashdiff).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of the field in staging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.parent_table_type">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">parent_table_type</span></code><a class="headerlink" href="#diepvries.field.Field.parent_table_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parent table type, based on table prefix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="diepvries.html#diepvries.TableType" title="diepvries.TableType"><code class="xref py py-class docutils literal notranslate"><span class="pre">TableType</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Table type (HUB, LINK or SATELLITE).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.prefix">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">prefix</span></code><a class="headerlink" href="#diepvries.field.Field.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get field prefix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Field prefix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.role">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">role</span></code><a class="headerlink" href="#diepvries.field.Field.role" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the role of the field in a Data Vault model.</p>
+<blockquote>
+<div><p>See <cite>FieldRole</cite> enum for more information.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="diepvries.html#diepvries.FieldRole" title="diepvries.FieldRole"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldRole</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Field role in a Data Vault model.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – When no field role can be attributed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.suffix">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">suffix</span></code><a class="headerlink" href="#diepvries.field.Field.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get field suffix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Field suffix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;Picnic Technologies.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/diepvries.field.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

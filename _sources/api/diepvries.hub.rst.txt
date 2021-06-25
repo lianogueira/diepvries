@@ -1,0 +1,7 @@
+diepvries.hub module
+====================
+
+.. automodule:: diepvries.hub
+   :members:
+   :undoc-members:
+   :show-inheritance:
