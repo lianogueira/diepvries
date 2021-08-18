@@ -169,8 +169,8 @@ of your system.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="kn">from</span> <span class="nn">diepvries</span> <span class="kn">import</span> <span class="n">FieldDataType</span>
-<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span> <span class="nn">diepvries.data_vault_load</span> <span class="kn">import</span> <span class="n">DataVaultLoad</span>
+<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span> <span class="nn">diepvries.hub</span> <span class="kn">import</span> <span class="n">Hub</span>
 <span class="kn">from</span> <span class="nn">diepvries.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
 
@@ -338,8 +338,8 @@ supports them:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="kn">from</span> <span class="nn">diepvries</span> <span class="kn">import</span> <span class="n">FieldDataType</span>
-<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span> <span class="nn">diepvries.data_vault_load</span> <span class="kn">import</span> <span class="n">DataVaultLoad</span>
+<span class="kn">from</span> <span class="nn">diepvries.field</span> <span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span> <span class="nn">diepvries.hub</span> <span class="kn">import</span> <span class="n">Hub</span>
 <span class="kn">from</span> <span class="nn">diepvries.role_playing_hub</span> <span class="kn">import</span> <span class="n">RolePlayingHub</span>
 <span class="kn">from</span> <span class="nn">diepvries.satellite</span> <span class="kn">import</span> <span class="n">Satellite</span>
@@ -449,11 +449,11 @@ point in time. This means that, if a Customer changes its Contact
 entry, only the latest relationship between the Customer and its
 Contact is kept as an open relationship.</p>
 <p>This is also supported by <code class="docutils literal notranslate"><span class="pre">diepvries</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diepvries.driving_key_field</span> <span class="kn">import</span> <span class="n">DrivingKeyField</span>
-<span class="kn">from</span> <span class="nn">diepvries.deserializers.snowflake_deserializer</span> <span class="kn">import</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">diepvries.deserializers.snowflake_deserializer</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DatabaseConfiguration</span><span class="p">,</span>
     <span class="n">SnowflakeDeserializer</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">diepvries.driving_key_field</span> <span class="kn">import</span> <span class="n">DrivingKeyField</span>
 
 
 <span class="k">def</span> <span class="nf">deserialize</span><span class="p">():</span>

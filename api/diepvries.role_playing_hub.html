@@ -149,7 +149,7 @@ views pointing to the main hub.</p>
 <dd><p>Get the SQL query to populate the current role playing hub.</p>
 <p>If table has a parent table - role playing hub.</p>
 <p>All needed placeholders are calculated, in order to match template SQL (check
-template_sql.role_playing_hub_dml.sql).</p>
+template_sql.hub_link_dml.sql).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
@@ -168,7 +168,7 @@ template_sql.role_playing_hub_dml.sql).</p>
 <p>The results are joined with the results from super().sql_placeholders(),
 as most placeholders calculated in Table (parent class) are applicable in a
 RolePlayingHub. The only placeholder that is calculated in the parent class
-and replaced in this method is data_vault_table, that points to the parent
+and replaced in this method is target_table, that points to the parent
 hub in this case.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>

@@ -171,6 +171,17 @@ applicable when <cite>self.data_type==FieldDataType.TEXT</cite>.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt id="diepvries.field.Field.data_type_sql">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data_type_sql</span></code><a class="headerlink" href="#diepvries.field.Field.data_type_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build SQL expression to represent the field data type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="diepvries.field.Field.ddl_in_staging">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ddl_in_staging</span></code><a class="headerlink" href="#diepvries.field.Field.ddl_in_staging" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get DDL expression to create this field in the staging table.</p>
@@ -180,6 +191,30 @@ applicable when <cite>self.data_type==FieldDataType.TEXT</cite>.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The DDL expression for this field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="diepvries.field.Field.hash_concatenation_sql">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">hash_concatenation_sql</span></code><a class="headerlink" href="#diepvries.field.Field.hash_concatenation_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build SQL expression to deterministically represent the field as a string.</p>
+<p>This expression is needed to produce hashes (hashkey/hashdiff) that are
+consistent, independently on the data type used to store the field in the
+extraction table.</p>
+<p>The SQL expression does the following steps:</p>
+<ol class="arabic simple">
+<li><p>Cast field to its data type in the DV model.</p></li>
+</ol>
+<p>2. Produce a consistent string representation of the result of step 1, depending
+on the field data type.
+3. Ensure the result of step 2 never returns NULL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQL expression to deterministically represent the field as a string.</p>
 </dd>
 </dl>
 </dd></dl>
