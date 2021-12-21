@@ -140,6 +140,10 @@
 </li>
         <li><a href="api/diepvries.role_playing_hub.html#diepvries.role_playing_hub.RolePlayingHub.__init__">(diepvries.role_playing_hub.RolePlayingHub method)</a>
 </li>
+        <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.__init__">(diepvries.table.DataVaultTable method)</a>
+</li>
+        <li><a href="api/diepvries.table.html#diepvries.table.StagingTable.__init__">(diepvries.table.StagingTable method)</a>
+</li>
         <li><a href="api/diepvries.table.html#diepvries.table.Table.__init__">(diepvries.table.Table method)</a>
 </li>
       </ul></li>
@@ -203,6 +207,8 @@
 </li>
       <li><a href="api/diepvries.data_vault_load.html#diepvries.data_vault_load.DataVaultLoad">DataVaultLoad (class in diepvries.data_vault_load)</a>
 </li>
+      <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable">DataVaultTable (class in diepvries.table)</a>
+</li>
       <li><a href="api/diepvries.html#diepvries.FieldDataType.DATE">DATE (diepvries.FieldDataType attribute)</a>
 </li>
       <li><a href="api/diepvries.field.html#diepvries.field.Field.ddl_in_staging">ddl_in_staging() (diepvries.field.Field property)</a>
@@ -246,6 +252,8 @@
         <li><a href="api/diepvries.driving_key_field.html#module-diepvries.driving_key_field">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     diepvries.effectivity_satellite
 
@@ -253,8 +261,6 @@
         <li><a href="api/diepvries.effectivity_satellite.html#module-diepvries.effectivity_satellite">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     diepvries.field
 
@@ -339,13 +345,13 @@
 </li>
       <li><a href="api/diepvries.html#diepvries.FieldRole">FieldRole (class in diepvries)</a>
 </li>
-      <li><a href="api/diepvries.table.html#diepvries.table.Table.fields">fields() (diepvries.table.Table property)</a>
+      <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.fields">fields() (diepvries.table.DataVaultTable property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/diepvries.table.html#diepvries.table.Table.fields_by_name">fields_by_name() (diepvries.table.Table property)</a>
+      <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.fields_by_name">fields_by_name() (diepvries.table.DataVaultTable property)</a>
 </li>
-      <li><a href="api/diepvries.table.html#diepvries.table.Table.fields_by_role">fields_by_role() (diepvries.table.Table property)</a>
+      <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.fields_by_role">fields_by_role() (diepvries.table.DataVaultTable property)</a>
 </li>
       <li><a href="api/diepvries.html#diepvries.FixedPrefixLoggerAdapter">FixedPrefixLoggerAdapter (class in diepvries)</a>
 </li>
@@ -379,7 +385,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/diepvries.html#diepvries.FieldRole.HASHKEY_PARENT">HASHKEY_PARENT (diepvries.FieldRole attribute)</a>
 </li>
-      <li><a href="api/diepvries.table.html#diepvries.table.Table.hashkey_sql">hashkey_sql() (diepvries.table.Table property)</a>
+      <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.hashkey_sql">hashkey_sql() (diepvries.table.DataVaultTable property)</a>
 </li>
       <li><a href="api/diepvries.hub.html#diepvries.hub.Hub">Hub (class in diepvries.hub)</a>
 </li>
@@ -402,7 +408,7 @@
 </li>
         <li><a href="api/diepvries.satellite.html#diepvries.satellite.Satellite.loading_order">(diepvries.satellite.Satellite property)</a>
 </li>
-        <li><a href="api/diepvries.table.html#diepvries.table.Table.loading_order">(diepvries.table.Table property)</a>
+        <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.loading_order">(diepvries.table.DataVaultTable property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -537,11 +543,9 @@
 </li>
         <li><a href="api/diepvries.satellite.html#diepvries.satellite.Satellite.sql_load_statement">(diepvries.satellite.Satellite property)</a>
 </li>
-        <li><a href="api/diepvries.table.html#diepvries.table.Table.sql_load_statement">(diepvries.table.Table property)</a>
+        <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.sql_load_statement">(diepvries.table.DataVaultTable property)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/diepvries.effectivity_satellite.html#diepvries.effectivity_satellite.EffectivitySatellite.sql_placeholders">sql_placeholders() (diepvries.effectivity_satellite.EffectivitySatellite property)</a>
 
       <ul>
@@ -553,12 +557,24 @@
 </li>
         <li><a href="api/diepvries.satellite.html#diepvries.satellite.Satellite.sql_placeholders">(diepvries.satellite.Satellite property)</a>
 </li>
-        <li><a href="api/diepvries.table.html#diepvries.table.Table.sql_placeholders">(diepvries.table.Table property)</a>
+        <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.sql_placeholders">(diepvries.table.DataVaultTable property)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/diepvries.data_vault_load.html#diepvries.data_vault_load.DataVaultLoad.staging_create_sql_statement">staging_create_sql_statement() (diepvries.data_vault_load.DataVaultLoad property)</a>
 </li>
-      <li><a href="api/diepvries.data_vault_load.html#diepvries.data_vault_load.DataVaultLoad.staging_table">staging_table() (diepvries.data_vault_load.DataVaultLoad property)</a>
+      <li><a href="api/diepvries.hub.html#diepvries.hub.Hub.staging_table">staging_table (diepvries.hub.Hub attribute)</a>
+
+      <ul>
+        <li><a href="api/diepvries.link.html#diepvries.link.Link.staging_table">(diepvries.link.Link attribute)</a>
+</li>
+        <li><a href="api/diepvries.role_playing_hub.html#diepvries.role_playing_hub.RolePlayingHub.staging_table">(diepvries.role_playing_hub.RolePlayingHub attribute)</a>
+</li>
+        <li><a href="api/diepvries.table.html#diepvries.table.DataVaultTable.staging_table">(diepvries.table.DataVaultTable attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/diepvries.table.html#diepvries.table.StagingTable">StagingTable (class in diepvries.table)</a>
 </li>
       <li><a href="api/diepvries.field.html#diepvries.field.Field.suffix">suffix() (diepvries.field.Field property)</a>
 </li>
