@@ -1,10 +1,6 @@
 name: pages-build-and-deploy
 
-# Only run this workflow when a diepvries/* tag gets pushed
-on:
-  push:
-    tags:
-      - diepvries/*
+on: [push]
 
 jobs:
   deploy-github-pages:
